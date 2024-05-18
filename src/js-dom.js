@@ -9,6 +9,21 @@
 // should switch from "Log Out" to "Log In".
 
 /// TODO: replace this with your code
+const logInBut = document.getElementById("auth");
+
+let isLoggedIn = false; //track if we are logged in or not. default is false
+
+logInBut.addEventListener("click", function() {
+    if (isLoggedIn) {
+        logInBut.textContent = "Log in"
+        isLoggedIn = false;
+    } else { 
+        logInBut.textContent = "Log out"
+        isLoggedIn = true;
+    }
+})
+
+
 
 // Send an alert
 //
@@ -18,6 +33,22 @@
 // text box. Then, they can submit the form to trigger the alert.
 
 /// TODO: replace this with your code
+let sendAlert = document.getElementById("send-alert");
+
+const messageInput = document.getElementById("alert-message");
+
+sendAlert.addEventListener("submit", function(event) {
+    event.preventDefault() //prevent the default form submission
+
+    const message = messageInput.value;
+
+    if (message) {
+        alert(message);
+        messageInput.value = "" // reset value after you input
+    } else {
+        alert("Please Enter a Message :)")
+    }
+})
 
 // Add an item
 //
@@ -36,6 +67,17 @@
 
 /// TODO: replace this with your code
 
+let addItem = document.getElementById("item-adder"); 
+const listContainer = document.getElementById("list");
+
+addItem.addEventListener("dblclick", function() {
+
+const newItem = document.createElement("li");
+newItem.textContent = "Item"
+listContainer.appendChild(newItem);
+
+})
+
 // Change colors
 //
 // Users should be able to change the color of any element with the
@@ -46,6 +88,26 @@
 // Stuff Blue" should make text blue.
 
 /// TODO: replace this with your code
+
+
+// access our buttons
+const blueBut = document.getElementById("blue");
+const redBut = document.getElementById("red");
+
+
+// write out our function to change color
+const changeColor = (color) => {
+    elements = document.querySelectorAll(".changes-colors"); //select all class elements
+
+    for (const element of elements) {
+        element.style.color = color; //update the color
+    }
+};
+
+// click button to change color
+blueBut.addEventListener("click", () => changeColor("blue"));
+redBut.addEventListener("click", () => changeColor("red"))
+
 
 // Calculate factorial
 //
@@ -64,6 +126,26 @@
 
 /// TODO: replace this with your code
 
+
+function factorial(num) {
+    let value = num
+    for (let i = num - 1; i > 0; i--) {
+        value = value * i;
+    }
+    return value;
+}
+
+const form = document.getElementById("factorial-calculator");
+const result = document.getElementById("result");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const numberInput = parseInt(e.target[0].value)
+
+    result.textContent = factorial(numberInput)
+    console.log("This will work", e)
+})
+
 // Validate a form
 //
 // This form is used to collect word recommendations from users. However, it
@@ -80,3 +162,23 @@
 // change the color of the text to red..
 
 /// TODO: replace this with your code
+
+let validateForm = document.getElementById("recommend-word");
+let feedbackEl = document.querySelector('.form-feedback')
+    
+validateForm.addEventListener("submit",function(e) {
+    e.preventDefault();
+    // const word = document.getElementById("word")
+    console.log(e)
+    const word = e.target[0].value
+    //  const word = document.querySelector("#word");
+     console.log(word);
+
+    if (word.length < 4) {
+        feedbackEl.textContent = "The word must be at least 4 characters long."
+        feedbackEl.style.color = "red";
+    }  else {
+        feedbackEl.textContent = "Thanks for your submission!"
+        feedbackEl.style.color = 'green';
+    }
+})

@@ -31,28 +31,32 @@ If you open index.html in VS Code, you should see that it contains a stylesheet 
 
   <body>
     <section>
-      <div>
-        <label>Character Name:</label>
-        <input type="text" name="character"/>
-     </div>
-      <div>
-        <label>Jedi</label>
-        <input type="radio" name="Jedi"/>
-        <label>Sith</label>
-        <input type="radio" name="Sith"/>
-      </div>
+      <form>
+        <div>
+          <label>Character Name:</label>
+          <input type="text" name="character"/>
+        </div>
+        
+        <div>
+          <label class="margin-right">Jedi</label>
+          <input type="radio" class="margin-right" value="jedi"/>
+          <label class="margin-right">Sith</label>
+          <input type="radio" value="sith"/>
+        </div>
       
       <div>
-      <label>Light Saber Color:</label>
-      <select name="saber color">
-        <option value="blue">Blue</option>
-        <option value="green">Green</option>
-        <option value="red">Red</option>
-        <option value="purple">Purple</option>
-      </select>
-    </div>
-
+        <label>Light Saber Color:</label>
+        <select name="lightsaber">
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="red">Red</option>
+          <option value="purple">Purple</option>
+        </select>
+      </div>
+    
+      
       <input type="submit" class="button"/>
+    </form>
 
       <table border="1px solid white">
         <thead>

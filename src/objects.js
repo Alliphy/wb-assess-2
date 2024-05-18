@@ -98,26 +98,26 @@ function translateToPirateTalk(phrase) {
 //   wordCount('hello world')
 //   => { hello: 1, world: 1 }
 
-
 function wordCount(str) {
+  
+  const words = str.split(" ");
+  
+  const wordCount = {};
+  
+  words.forEach((word) => {
+    // console.log('word: ', word);
 
-  // reduce takes in our three arguments
-  // the accumulator is empty in this instance as we don't know the current cord count
-  // current index of the word in the array. Do I need this somewhere? 
+    if (wordCount[word]) {
+      wordCount[word]++;
+    } else {
+      wordCount[word] = 1;
+    }
+  });
 
-    return str.split().reduce((count, word) => {
-      // count[word] accesses count for our current word 
-      // || 0 if the word doesn't exist count[word] will be undefined. it will evaluate to a big 0
-      // then it will add keep looking for a new word with our + 1
-      // return our count
-      // this hurt my brain. rip to sanity
-    count[word] = (count[word] || 0 + 1);
-
-    return count;
-  }, {})
+  return wordCount;
 }
 
-// How to get in one line in our console return 
+
 
 // Given an object representing a bug, return true if the given bug is
 // available in the given month.
